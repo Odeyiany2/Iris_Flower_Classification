@@ -22,13 +22,6 @@ if option == "Enter measurements manual":
     Petal_Length = st.text_area("Enter the petal length")
     Petal_Width = st.text_area("Enter the petal width")
 
-    #creating a dataframe of the manually entered data
-    manual_data = pd.DataFrame({
-        "Sepal_length": [Sepal_Length],
-        "Sepal_width": [Sepal_Width],
-        "Petal_length": [Petal_Length],
-        "Petal_width": [Petal_Width]
-    })
     #function to encode the predicted values
     def iris_analyze(x):
         if x == 0:
@@ -40,6 +33,13 @@ if option == "Enter measurements manual":
         
     if st.button("Predict"):
         start = time.time()
+        #creating a dataframe of the manually entered data
+        manual_data = pd.DataFrame({
+            "Sepal_length": [Sepal_Length],
+            "Sepal_width": [Sepal_Width],
+            "Petal_length": [Petal_Length],
+            "Petal_width": [Petal_Width]
+        })
         #scaling the features
         scaler = StandardScaler()
         manual_data_scaled = scaler.fit_transform(manual_data)
